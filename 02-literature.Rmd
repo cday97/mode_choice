@@ -1,4 +1,4 @@
-# Literature
+# Literature2
 
 Here is a review of existing methods. Use the `bookdown` [@xie2015] package
 referencing system to make it easy on yourself.
