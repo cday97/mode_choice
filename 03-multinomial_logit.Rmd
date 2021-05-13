@@ -1,4 +1,12 @@
-# Literature2
+# Multinomial Logit Mode Choice {#chap3}
+Currently, BEAM uses a multinomial logit mode choice model. This model takes in certain parameters and inputs and uses them to estimate the likely mode choice for each user in their repsective situation. In order to fully understand its process though, first an understanding of how the a multinomial logit works is necessary.
+
+## Framework in BEAM
+
+### Default Values
+
+### Process in Code
+
 
 Here is a review of existing methods. Use the `bookdown` [@xie2015] package
 referencing system to make it easy on yourself.

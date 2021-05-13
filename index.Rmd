@@ -1,15 +1,12 @@
 ---
-title: "Article Long Title"
+title: "A Detailed Explanation of Mode Choice in BEAM"
 author:
-  - name: Gregory Macfarlane
-    email: gregmacfarlane@byu.edu
+  - name: Christopher Day
+    email: christophersday@gmail.com
     affiliation: Brigham Young University
     footnote: 1
-  - name: Cosmo Cougar
-    email: bob@example.com
-    affiliation: Brigham Young University
-  - name: Masters Student
-    email: cat@example.com
+  - name: Gregory Macfarlane
+    email: gregmacfarlane@byu.edu
     affiliation: Brigham Young University
     footnote: 2
 address:
@@ -30,7 +27,9 @@ bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
 abstract: |
-  This is where the abstract should go.
+  The purpose of this exploration is to understand as much as possible about the current mode choice processes in BEAM. More specifically, an analysis of the multinomial mode choice model is done first, followed by an analysis of the latent class mode choice model. Within each analysis, the theory behind both models as well as how they are specifically implemented in the BEAM code are both explained. 
+  
+  In addition, an analysis of the mode choice model in ActivitySim is conducted. Understanding the mode choice model in ActivitySim is essential as many of our inputs to BEAM come from the ActivitySim model. Therefore, as a way to better align the two models, the idea of implementing a purpose based mode choice model within BEAM is brought up.  
 description: "A short description"
 layout: "3p, authoryear"
 keywords:
@@ -41,27 +40,27 @@ keywords:
 
 # Introduction {#intro}
 
+The most prominent behavior in BEAM is mode choice. Since BEAM is an adaptive microsimulation modeling tool, the mode choice in BEAM is also adaptive. Yes, mode choice can be specified in the plans file, but after the 0 iteration, the adaptive process takes place.
 
-This repository serves as a template both in how to write a report, and how
-to do so in RStudio and Bookdown. The parent repository is available as a free
-template at [https://github.com/byu-transpolab/template_bookdown](https://github.com/byu-transpolab/template_bookdown).
+The following modes are considered as options in BEAM:
 
-The advice in this document comes from numerous sources. Some of it is my own, some
-has been shared by others. Particular note belongs to:
-
-  - Laurie Garrow
-  - Lisa Rosenstein
-  - Kara Kockelman
+  - walk
+  - car
+  - bike
+  - ride_hail
+  - ride_hail_pooled
+  - walk_transit
+  - drive_transit
+  - bike_transit
+  - ride_hail_transit
   
-The introduction of your report is not simply an "introduction", but rather a 
-**motivation** of why your project matters. What is the cost of not solving 
-this problem? What have been previous attempts to solve this problem? The *why*
-is more important than the *what*. Why is this article worthy of archiving?
+The mode options are displayed in the correct format for usage in BEAM. Also,  walk is the fallback modal option if for some reason the planned mode becomes impossible within the framework. 
 
-A three or four-paragraph structure can work well here.
+There are two mode choice models set up within BEAM to adaptively select modes for each user based on default parameters. The first one is the multinomial logit mode choice model. The second one is the latent class mode choice model. These two mode choice models will be explained thoroughly in the following chapters:
 
-  1. Identify the problem and why it matters.
-  2. A high-level overview of some previous attempts to solve it, and why those 
-  attempts were limited (this might be two paragraphs).
-  2. Describe the approach (very briefly), and provide an overview of what is 
-  to come. "In this paper we present ..."
+  - **Multinomial Logit Mode Choice** (\@ref(chap3))
+  - **Latent Class Mode Choice** (\@ref(chap4))
+  
+Following the explanation of the mode choice models in BEAM, the chapter **Purpose Based Mode Choice** (\@ref(chap5)) dives into the mode choice model in ActivitySim, and proposes why implementing a purpose based mode choice model in BEAM could prove beneficial. 
+
+Additional information about BEAM's mode choice can be found in the user guide at [https://beam.readthedocs.io/en/latest/behaviors.html#mode-choice](https://beam.readthedocs.io/en/latest/behaviors.html#mode-choice).

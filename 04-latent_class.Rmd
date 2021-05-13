@@ -1,4 +1,8 @@
-# Methods
+# Latent Class Mode Choice {#chap4}
+
+## Theory
+
+## Framework in BEAM
 
 ```{r setup, include = FALSE}
 # load R libraries here; the `include` flag in the chunk options above tells
@@ -37,7 +41,7 @@ In this chapter, you describe the approach you have taken on the problem. This
 usually involves a discussion about both the data you used and the models you
 applied.
 
-## Data
+Data
 
 Discuss where you got your data, how you cleaned it, any assumptions you made.
 
@@ -62,19 +66,14 @@ datasummary_balance(
   )
 ```
 
-## Models
+Models
 
 If your work is mostly a new model, you probably will have introduced some
 details in the literature review. But this is where you describe the
 mathematical construction of your model, the variables it uses, and other
 things. Some methods are so common (linear regression) that it is unnecessary to
 explore them in detail. But others will need to be described, often with
-mathematics.  For example, the probability of a multinomial logit model is
-
-\begin{equation}
-  P_i(X_{in}) = \frac{e^{X_{in}\beta_i}}{\sum_{j \in J}e^{X_{jn}\beta_j}}
-  (\#eq:mnl)
-\end{equation}
+mathematics.  
 
 Use [LaTeX mathematics](https://www.overleaf.com/learn/latex/mathematical_expressions). 
 You'll want to number display equations so that you can
