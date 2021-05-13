@@ -2,13 +2,13 @@
 Predicting people's choices can be difficult. 
 
 ## Discrete Choice Model
-A discete choice model is a model that predicts choices between two or more discrete alternatives within a choice set. In other words, it answers the question "Which one?" instead of "How much?"; (continuous choice models answer the question "How much?"). Discrete choice models are often used to predict common human behaviors relating to any decision that has a finite number of options, like which mode of transportation an individual will use.
+A discete choice model is a model that predicts choices between two or more discrete alternatives within a choice set. In other words, it answers the question "Which one?" instead of "How much?"; (continuous choice models answer the question "How much?"). Discrete choice models are often used to predict common human behaviors relating to any decision that has a finite number of options, like which mode of transportation an individual will use (Wikepedia).
 
 The choice set defines the list of alternatives available to the individual. The alternatives must meet certain criteria to be a part of the choice. Specifically, three requirements must be met:
 
   1. The set of alternatives must be *collectively exhaustive*. This means that no other alternative can be chosen that exists outside the specified set.
   2. The alternatives must be *mutually exclusive*. This means that only one alternative can be chosen. If one is chosen, another one cannot be chosen simultaneously. 
-  3. The set of alternatives must include a finite number of alternatives.
+  3. The set of alternatives must include a finite number of alternatives (Wikepedia).
   
 Some exceptions do exist however. In the case of transportation mode choice, a combination of modes is possible (i.e. an individual can drive to the train station). Although this is true, no user can be on the train and in the car at the same time. They can, however, use two modes of transportation for any one trip. It brings about one of the many complexities that exist in discrete choice modeling, and especially the complexities of mode choice modeling. Usually though, any  model that predicts the choice of an individual from a set of alternatives that meet the above choice set requirements is considered to be a discrete choice model. 
 
@@ -29,8 +29,10 @@ In addition, the utility, $U$, is composed up of two parts. The first part inclu
 
 Understanding this, the mathematical choice can be rewritten. Alternative $i$ is chosen if
 
-\begin{equation} V_i + e_i > V_j + e_j, \forall j \neq i \in J \end{equation}
-\begin{equation} V_i - V_j > e_j - e_i, \forall j \neq i \in J \end{equation}
+\begin{equation} 
+  V_i + e_i > V_j + e_j, \forall j \neq i \in J (\#eq:util21) \end{equation}
+\begin{equation} 
+  V_i - V_j > e_j - e_i, \forall j \neq i \in J (\#eq:util22) \end{equation}
 
 or, if the difference in the measured, or observed, utility is greater than the difference in the unmeasured, or unobserved, error [@mac-urb2020]. Furthermore, to better comprehend the utility function, the details behind what makes up the observed and unobserved portion of the utility function should be explored. 
 
@@ -72,7 +74,7 @@ The mutlinomial logit model is a probability function that determines the probab
 All three assumptions together form the mathematical structure known as the Multinomial Logit Model (MNL). The choice probabilities of each alternative are given as a function of the observed utility of all the alternatives. The mathematical expression of the probability of choosing alternative $i$ from alternatives $j$ in choice set $J$ is: 
 
 \begin{equation}
-  P_i = \frac{e^{V_i}}{\sum_{j \in J}e^{V_j}}
+  P_i = \frac{e^{V_i}}{\sum_{j \in J}e^{V_j}} (\#eq:mnl1)
 \end{equation}
 
 where
@@ -80,16 +82,130 @@ where
   - $P_i$ is the probability of the alternative $i$ being chosen by an individual and
   - $V_j$ is the oberved utility of the alternative $j$ [@mac-urb2020].
   
-An important attribute of the MNL equation is that an increase in the systemic or observed utility will monotomically increase the probability of that same alternative being chosen. The MNL equation also forms a sigmoid or S shape when graphed. In addition, a simple change in the value of one alternative's utility will have a similarly changing effect on the probability of choosing any other alternatives within the choice set. Although this is true, equal changes across all alternative values will not affect the ratio of one utility to another [@mac-mode2020]. Overall, the MNL equation has many valuable properties, but we will not go into greater detail than what has already been explained.
+### Properties of MNL Equation
 
-### Nested Logit Model
+An important attribute of the MNL equation is that an increase in the systemic or observed utility will monotomically increase the probability of that same alternative being chosen. The MNL equation also forms a sigmoid or S shape when graphed. In addition, a simple change in the value of one alternative's utility will have a similarly changing effect on the probability of choosing any other alternatives within the choice set. Although this is true, equal changes across all alternative values will not affect the ratio of one utility to another [@mac-mode2020]. These are just a few of the properties that the MNL equation has. A detailed explanation of these properties can be found at [https://byu-transpolab.github.io/modechoice].
 
-[@mac-urb2020]
+Another property of the MNL model that is worth going into greater detail over is called the independence of irrelevant alternatives (IIA) property.  The IIA property means that the probabilities of the alternatives is only based on the utility of the alternatives. The ratio of probabilities can be writeen mathematically as
+
+\begin{equation}
+  \frac{P_i}{P_k} = \frac{e^{V_i}}{\sum_{j \in J}e^{V_j}} \times \frac{\sum_{j \in J}e^{V_j}}{1} = \frac{e^{V_i}}{e^{V_k}} (\#eq:mnl2)
+\end{equation}
+
+A potential problem that results with the IIA property is that it introduces unreasonable behavior when a new mode choice option is introduced. For example, let's consider two modes, car and bike, where $V_{car}=0$ and $V_{bus}=1$. The MNL probabilities and the ratio of the probabilities are 
+
+\begin{equation} P_{car} = \frac{e^{1}}{e^{0}+e^{1}} = 0.731 \end{equation}
+\begin{equation} P_{bus} = \frac{e^{0}}{e^{0}+e^{1}} = 0.269 \end{equation}
+\begin{equation} \frac{P_{car}}{P_{bus}} = 0.368 \end{equation}
+
+What happens when a new mode is added? Lets add the Light Rail Transit (LRT) mode with $V_{LRT} = 0.5.$ The choice probabilities and ratios become
+
+\begin{equation} P_{car} = \frac{e^{1}}{e^{0}+e^{1}+e^{0.5}} = 0.506 \end{equation}
+\begin{equation} P_{bus} = \frac{e^{0}}{e^{0}+e^{1}+e^{0.5}} = 0.186 \end{equation}
+\begin{equation} P_{LRT} = \frac{e^{0.5}}{e^{0}+e^{1}+e^{0.5}} = 0.307 \end{equation}
+\begin{equation} \frac{P_{car}}{P_{bus}} = 0.368 \end{equation}
+
+The ratio of the probability between car and bus remains constant at $\frac{P_{car}}{P_{bus}}=0.368$ but the individual probabilities of $P_{car}$ and $P_{bus}$ decrease. The LRT passengers in this example were formerly auto and bus passengers in the previous example. Because of the way the MNL model works, "73% of the new light rail passengers were formerly automobile passengers" [@mac-mode2020]. This doesn't make sense though. Most LRT users should come from the similar subset of the population as the people who use buses, not automobiles. Bus passengers and LRT passengers have more in common than car passengers. Of course, some LRT passengers will originally come from car users, but not most of them [@mac-mode2020]. 
+
+In conclusion, it is safe to say that the multinomial logit model is not perfect. "The primary limitation of the model is that the IIA axiom isimplausible for alternative sets containing choices that are close substitutes" [@mcfad1974].For this reason, there exists a way to connect together certain mode choices with others, thus maneuvering around the IIA property. The Nested Logit Model is one way to "connect" similar modes together.
+
+## Nested Logit Model
+The Multinomial Logit model distributes choice probabilities equally. A way to visually represent this can be shown below. 
+
+```{r,echo=FALSE}
+knitr::include_graphics("pics/mnl_tree.png")
+```
+
+A Nested Logit Model, on the other hand, does not distribute choice probabilities equally. It instead, groups together certain mode choices under the same subset of probabilitiy. A way to visually represent this can be shown below.
+
+```{r,echo=FALSE}
+knitr::include_graphics("pics/nl_tree.png")
+```
+
+Mathematically, the nested logit model choice probability of an alternative can be shown below
+
+\begin{equation}
+  P_i = \frac{e^{V_i/\lambda_k}(\lambda_{j \in B_k}e^{V_j/\lambda_k})^{\lambda_t-1}}{\sum_{l \in K}(\sum_{j \in B_t}e^{V_j/ \lambda_t})^{ \lambda_t-1}} (\#eq:mnl3)
+\end{equation}
+
+where 
+
+  - $\lambda$ represents the observable correlation between choices. 
+
+When $\lambda = 1$, no observable correlation exists between the choices, and the equation reverts back to the MNL equation. When $\lambda > 1$ then a negative correlation exists, meaning *more* people would choose the utility that is trying to be isolated. This would violate utility theory itself, and therfore the estimated correlation exists as $0 < \lambda < 1.$
+
 
 ## Latent Class Model
+Another way to surpass the limitation of the MNL model is to use a Latent Class Choice Model (LCM). The LCM is especially useful for modeling "indivdual choice heterogeneity based on alternative attributes and characterisitics" [@regy2016]. It maximizes the individual's choice while minimizing error by  dividing up individuals into select, probabilistic groups based on their attributes and their likelihood of being part of that group. An example of how this grouping looks like visually is shown below. 
 
-[@mac-mode2020]
+```{r,echo=FALSE}
+knitr::include_graphics("pics/lcm_tree.png")
+```
 
+"FIGURE 1. Graphical model associated with a latent class model with a random effect in the latent class distribution." (https://www.semanticscholar.org/paper/7.-Multilevel-Latent-Class-Models-Vermunt/b418c9829e31c59ee2b25d1a19293a1ce74820eb/figure/0)
+
+By dividing individuals up into differing groups, the LCM   accounts for "the fact that different segments of the population have different needs and values and thus may exhibit different choice preferences" [@jay2003]. Latent Class Choice Models are more effective and realistic at prediciting discrete choice alternatives. They account more heaviliy for the differences between different groups of people. For example, an individual with a high income, who lives near the edge of town will be more likely to use a car mode than an individual who has a low income and lives near the city center. These two different types of individuals will likely be part of two different groupings. 
+
+Although, unlike cluster analysis, each individual has a possibility of being part of any group because their group is selected probabilistically opposed to deterministically. After individuals are separated into their group or *class*, their choice is determined by a utility function. Each class has marginally different functions to calculate the alternative based on that class's set of attributes[@regy2016]. Of course, the alternative each individual selects within each class is also calulated probabilisitically.
+
+An analyst cannot know the true class for which the individual is a part of. For this very reason, error terms and probabilities are calculated. A detailed mathematical process of the Latent Class Model is now described.
+
+### Mathematical Representation of LCM
+The mathematical representations of a Latent Class Model are similar to the mathematics behind the Multinomial Logit Model. First, the multinomial logit probability choice equation, Equation \@ref(eq:mnl1), is used on the class level. Then, the same probability choice equation is used to determine for which class to put the individual. In addition, these representations will include more detail than those equations shown in Section 2.3. Also note that these equations are directly imported from [@hunty]
+
+Starting from the beginning, and very similar to Equation \@ref(eq:util1), the class specific utility function for choosing alternative $i$ by decision maker $n$ is
+
+\begin{equation}
+  U_{in}^{c} = V(X_{in},X{n},\beta^c) + e_{in}^c (\#eq:lcm1)
+\end{equation} 
+
+where
+
+  - $V(X_{in},X{n},\beta^c)$ is the oberservable part of the utility function,
+  - $X_{in}$ is a vector of attributes relating to alternative $i$ for individual $n$, 
+  - $X_n$ is a vector of attributes for individual $n$,
+  - $\beta^c$ is an estimated vector of paramters specific to class $c$, and
+  - $e_{in}^c$ is the random component of the utility which accounts for the unobserved attributes of the alternative.
+  
+Knowing the utility of the alternative on the class level, the probability of individual $n$ choosing alternative $i$, within the class $c$ can be calculated. A slightly more detailed version of Equation \@ref(eq:mnl1), the probability of choosing the alternative within a class is mathematically
+
+\begin{equation}
+  P_n(i|s) = \frac{e^{V(X_{in},X{n},\beta^c)}}{\sum_{j \in C_c}e^{V(X_{jn},X{n},\beta^c)}} (\#eq:lcm2)
+\end{equation}
+
+where
+
+  - $C_c$ is the set of alternatives which are considered by the individuals belonging to class $c$.
+  
+Equation \@ref(eq:lcm1) and Equation \@ref(eq:lcm2) relate to the utility and probability of individuals selecting an alternative within a specific group. Similarly, a utility and probability function are associated with which group an individual is to be a part of. As explained above, individuals are not deterministically assigned a class, but they are assigned membership to classes based on the characteristics that they possess [@hunty]. This relation can be described the *class-membership function*, such that
+
+\begin{equation}
+  F_{nc} = f(X_n,\gamma^c) + \epsilon_{nc} (\#eq:lcm3)
+\end{equation}
+
+where
+
+  - $F_{nc}$ "is a latent continuous variable that is related to the probability of belocint to class c and can be perceived as the 'utility' to belong to one class" [@hunty],
+  - $\gamma^c$ is the estimated vector of parameters and
+  - $\epsilon_{nc}$ is probably the error term.
+  
+The probability of person $n$ belonging to class $c$ can then be represented in a logit formula, such that
+
+\begin{equation}
+  P_n(c) = \frac{e^{f(X_n,\gamma^c)}}{\sum_{r \in C}e^{f(X_n,\gamma^r)}} (\#eq:lcm4)
+\end{equation}
+
+where
+
+  - $C$ is the set of classes.
+
+Since the probability of class groupings, and the specific probability of alternatives within the class have both been calculated, the complete probability  of individual $n$ choosing alternative $i$ is shown in the following expression:
+
+\begin{equation}
+  P_n(i) = \sum_{c \in C}P_n(i|c)P_n(c) (\#eq:lcm5)
+\end{equation}
+
+Overall, the calculations representing the Latent Class Choice Model are fairly simple and mimic the logic equations from before. The separated classes are just a way of minimizing the IIA property errors that a simple Mutlinomial Logit Model presents. 
 
 ## Purpose Based Model
 
