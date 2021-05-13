@@ -1,4 +1,5 @@
 # Background {#chap2}
+Predicting people's choices can be difficult. 
 
 ## Discrete Choice Model
 A discete choice model is a model that predicts choices between two or more discrete alternatives within a choice set. In other words, it answers the question "Which one?" instead of "How much?"; (continuous choice models answer the question "How much?"). Discrete choice models are often used to predict common human behaviors relating to any decision that has a finite number of options, like which mode of transportation an individual will use.
@@ -15,12 +16,12 @@ Discrete choice models determine the probability of any one alternative being ch
 
 
 ## Utility-based Choice Theory
-"Utility is an indicator of value to an individual" (Macfarlane 2020). For example, when an individual makes a decision, often times they *weigh their options*. In the end, they chose the option that they value the most. In other words, and in economics, people choose the option that has the highest utility value to them. 
+"Utility is an indicator of value to an individual" [@mac-mode2020]. For example, when an individual makes a decision, often times they *weigh their options*. In the end, they chose the option that they value the most. In other words, and in economics, people choose the option that has the highest utility value to them. 
 
 ### Utility Function
 The utility function, $U$, is a function that represents the same idea expressed above. The alternative, $i$, is chosen if and only if the alternative, $i$, has the highest utility value amoung all alternative utility values, $j$, within an individual's choice set, $J$. In mathematical terms, alternative $i$ is chosen if $U_i > U_j, \forall j \neq i \in J.$ 
 
-In addition, the utility, $U$, is composed up of two parts. The first part includes attributes that can be directly measured and modeled (e.i. travel cost and travel time). The second part includes attributes that are unmeasurable and difficult to model (e.i how much a person loves riding their bike). Therefore, $U$ is composed up of a measureable portion, $V_i$, and an unmeasurable portion, $e_i$.
+In addition, the utility, $U$, is composed up of two parts. The first part includes attributes that can be directly measured and modeled (e.i. travel cost and travel time). The second part includes attributes that are unmeasurable and difficult to model (e.i how much a person loves riding their bike). Therefore, $U$ is composed up of a measureable portion, $V_i$, and an unmeasurable portion, $e_i$ [@mac-urb2020].
 
 \begin{equation} 
   U_i = V_i + e_i (\#eq:util1) 
@@ -31,10 +32,10 @@ Understanding this, the mathematical choice can be rewritten. Alternative $i$ is
 \begin{equation} V_i + e_i > V_j + e_j, \forall j \neq i \in J \end{equation}
 \begin{equation} V_i - V_j > e_j - e_i, \forall j \neq i \in J \end{equation}
 
-or, if the difference in the measured, or observed, utility is greater than the difference in the unmeasured, or unobserved, error. Furthermore, to better comprehend the utility function, the details behind what makes up the observed and unobserved portion of the utility function should be explored. 
+or, if the difference in the measured, or observed, utility is greater than the difference in the unmeasured, or unobserved, error [@mac-urb2020]. Furthermore, to better comprehend the utility function, the details behind what makes up the observed and unobserved portion of the utility function should be explored. 
 
 ### Observed Portion of the Utility Function
-The observed utility is composed of data which the analyst has previous observed. It can be expressed as a mathematical function of the alternative's attributes as well as the decision maker's characteristics. The function is also made up of parameters that are estimated during the modeling process. Usually, the observed utility takes a linear form, $V_i = \alpha_i + \beta X_i +\hat{\beta_i}C.$ 
+The observed utility is composed of data which the analyst has previous observed. It can be expressed as a mathematical function of the alternative's attributes as well as the decision maker's characteristics [@mac-mode2020]. The function is also made up of parameters that are estimated during the modeling process. Usually, the observed utility takes a linear form, $V_i = \alpha_i + \beta X_i +\hat{\beta_i}C.$ 
 
 Three seperate observed utility alternatives are displayed to show an example. They refer to a mode choice model. The three modes in consideration are car, transit, and bike. 
 
@@ -42,8 +43,8 @@ Three seperate observed utility alternatives are displayed to show an example. T
   - $V_{transit} = -4.0 -0.05(time_t) - 0.1(cost_t) - 1.8(high\space income)$
   - $V_{bike} = -4.5 -0.05(time_b) - 0.1(cost_b) - 0.6(high\space income)$
 
-There are three basic variables that exist within the observed utility. 
-  
+There are three basic variables that exist within the observed utility [@mac-urb2020]. 
+
   1. *Alternative-Specific Constants* ($\alpha_i$): These are constant values that control for the observable difference between each different alternative. If everything else is equal, these constants set each alternative apart. One alternative usually sets $\alpha = 0,$ and thus becomes the *reference alternative*. In the example above, $V_{car}$ is the referance alternative. $\alpha_{transit} = - 4.0$ and $\alpha_{bike} = -4.5$. 
   2. *Generic Coefficients* ($\beta$): These are coefficient values that stay constant for all alternatives. For example, cost and time have generic coefficient values. In the example above, $\beta_{time} = - 0.05$ and $\beta_{cost} = -0.1.$
   3. *Alternative-Specific Coefficient* ($\hat{\beta}$): These are coefficient values that change between each alternative. The coefficient usually represents the value of a specific individual attribute. In the example above, it is the coefficient before the $high \space income$ value. $\hat{\beta}_{transit} = -1.8$ and $\hat{\beta}_{bike} = -0.6.$
@@ -53,16 +54,16 @@ The observed utility joins together measurable data to form an overall utility v
 ### Unobserved Portion of the Utility Function
 If all aspects and attributes of the decision making process were known to analysts, a deterministic choice model would be an accurate representation for modeling discrete choices. However, especially in the case of mode choice, uncertainly must be taken into account because not all aspects of the internal decision making process are known. 
 
-As explained above, probabilistic choice theory includes the unobserved utility, $e_i$, within the utility function. Specifically, $e_i$ accounts for three possible sources of error within the deterministic choice model theory. 
+As explained above, probabilistic choice theory includes the unobserved utility, $e_i$, within the utility function. Specifically, $e_i$ accounts for three possible sources of error within the deterministic choice model theory [@mac-mode2020]. 
 
   1. The observed data may not be complete or fully accurate surrounding the attributes of the alternatives. For example, the generic coefficients surrounding the cost and time of a particular mode may not be correct.
   2. The observed data may not accurately represent the exact utility function that the individual uses when making a decision. For example, the analyst may not know the likelihood of getting a certain seat on the bus at a certain time of the day whereas the individual is sure to know this.
   3. The observed data may not include individual attributes that occur during specific circumstances. For example, if an individual has family visiting in town, their mode choice may be different than usual. 
   
-Analyst do not have sufficient knowledge to be able to predict individual's decisions without error. There is no realistic possibility of obtaining complete information on each person's alternative set for each decision. "Mode choice models should take a form that recognizes and accommodates the analyst's lack of information and understanding" (Macfarlane 2020). Models should describe population probabilities relating to how individuals will choose alternatives within a choice set instead of only providing the choice of highest utility. As a way of representing the unobserved utility, a random variable is used. Assumptions are then made on the distribution of the random variables for each alternative. Different assumptions lead to different predictions, but a common interpretation of the random variables forms what is known as the Multinomial Logit Model. 
+Analyst do not have sufficient knowledge to be able to predict individual's decisions without error. There is no realistic possibility of obtaining complete information on each person's alternative set for each decision. "Mode choice models should take a form that recognizes and accommodates the analyst's lack of information and understanding" [@mac-mode2020]. Models should describe population probabilities relating to how individuals will choose alternatives within a choice set instead of only providing the choice of highest utility. As a way of representing the unobserved utility, a random variable is used. Assumptions are then made on the distribution of the random variables for each alternative [@mac-mode2020]. Different assumptions lead to different predictions, but a common interpretation of the random variables forms what is known as the Multinomial Logit Model. 
 
 ## Multinomial Logit Model
-The mutlinomial logit model is a probability function that determines the probability of any one utility being chosen by an individual. Since analyst's are unable to determine an individual's maximum utility value, instead, a probability of each alternative is calculated. The origins of the multinomial logit model arise from assumptions made about the random variables of the unobserved utility. Specifically, there are three assumptions about the error components within the utility function that lead to multinomial logit model.
+The mutlinomial logit model is a probability function that determines the probability of any one utility being chosen by an individual. Since analyst's are unable to determine an individual's maximum utility value, instead, a probability of each alternative is calculated. The origins of the multinomial logit model arise from assumptions made about the random variables of the unobserved utility. Specifically, there are three assumptions about the error components within the utility function that lead to multinomial logit model [@mac-mode2020].
 
   1. The error components are Gumbel, or extreme-value distributed. In statistical and modeling literation, error is usually distributed normally. The Gumbel distribution is similar to a normal distribution, except that it is more computationally friendly; for this reason, the Gumbel distribution is used. 
   2. The error components are independently and identically distributed across all alternatives.
@@ -77,16 +78,17 @@ All three assumptions together form the mathematical structure known as the Mult
 where
 
   - $P_i$ is the probability of the alternative $i$ being chosen by an individual and
-  - $V_j$ is the oberved utility of the alternative $j$
+  - $V_j$ is the oberved utility of the alternative $j$ [@mac-urb2020].
   
-An important attribute of the MNL equation is that an increase in the systemic or observed utility will monotomically increase the probability of that same alternative being chosen. The MNL equation also forms a sigmoid or S shape when graphed. In addition, a simple change in the value of one alternative's utility will have a similarly changing effect on the probability of choosing any other alternatives within the choice set. Although this is true, equal changes across all alternative values will not affect the ratio of one utility to another. Overall, the MNL equation has many valuable properties, but we will not go into greater detail than what has already been explained.
+An important attribute of the MNL equation is that an increase in the systemic or observed utility will monotomically increase the probability of that same alternative being chosen. The MNL equation also forms a sigmoid or S shape when graphed. In addition, a simple change in the value of one alternative's utility will have a similarly changing effect on the probability of choosing any other alternatives within the choice set. Although this is true, equal changes across all alternative values will not affect the ratio of one utility to another [@mac-mode2020]. Overall, the MNL equation has many valuable properties, but we will not go into greater detail than what has already been explained.
 
 ### Nested Logit Model
 
-
+[@mac-urb2020]
 
 ## Latent Class Model
 
+[@mac-mode2020]
 
 
 ## Purpose Based Model
