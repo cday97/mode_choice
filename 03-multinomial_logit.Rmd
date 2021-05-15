@@ -1,28 +1,121 @@
-# Multinomial Logit Mode Choice {#chap3}
-Currently, BEAM uses a multinomial logit mode choice model. This model takes in certain parameters and inputs and uses them to estimate the likely mode choice for each user in their repsective situation. In order to fully understand its process though, first an understanding of how the a multinomial logit works is necessary.
+# Multinomial Logit Model in BEAM {#chap3}
+The first mode choice model available in BEAM is a simple multinomial logit mode choice model. This model takes in certain parameters and inputs and uses them to probabilistically estimate the likely mode choice for each user in their repsective situation. A detailed explanation of the details behind a multinomial logit choice model can be shown in Chapter \@ref(chap23).
 
-## Framework in BEAM
+Mathematically, the observerable utility equation for the simple multinomial logit model in BEAM can be shown as 
 
-### Default Values
+\begin{equation}
+  V_j = ASC_j + \beta_{cost}(cost) + \beta_{time}(time) + \beta_{xfer}(numtransfers) (\#eq:ml1)
+\end{equation}
 
-### Process in Code
+where
 
-
-Here is a review of existing methods. Use the `bookdown` [@xie2015] package
-referencing system to make it easy on yourself.
-
-The literature review is not simply a "review" or a list of what has been 
-done in the past. This needs to a thoughtful synthesis that accomplishes two
-things:
-
-  - Shows that you understand the previous efforts that other people have
-    made on this problem.
-  - Identifies the limitation or the gap in those previous efforts. 
+  - $j$ is the modal alternative,
+  - $V_j$ is the obervable portion of the utility equation,
+  - $ASC_j$ is the alternative specific constant, and
+  - $\beta_{cost}$, $\beta_{time}$, and $\beta_{xfer}$ are generic coefficients for the cost, time, and number of transfer parameters.
   
-You will have already mentioned this gap in the introduction, but here you need
-to build a solid case for why what you are doing is a meaningful contribution.
-    
-Literature reviews do not have a specific guidelines for length or number of
-citations. It's more about making a rhetorical argument; if it's a new problem
-then the review can be shorter. But you'll need to refer to previous attempts at
-the problem, the methods you are trying, and other things.
+All things considered, the observable utility equation for BEAM's multinomial logit model is pretty simple. There are only three $\beta$ coefficients along with one alternative specific constant. Also, in BEAM, utility equations are specific to different mode options. For example, the utility for car, walk, bike, etc. will all be different. Yes Equation \@ref(eq:ml1) shows the overarching utility equations, but the parameters differ between different modes. 
+
+The MNL equation is used in BEAM, but how exactly is it implemented? There are many steps, including the use of the utility equation, explaining the complete mode choice process in BEAM. 
+
+## Process in BEAM
+Understanding the current mode choice process in BEAM is essential to potentially updating or changing it in the future. In order to explain the mode choice process fully though, first a rough outline is shown, followed by details about specific parts of the steps. The idea behind the steps are to help guide BEAM users through the complex code that entangles the mode choice process itself. 
+
+Below are 11 steps, roughly from beginning to end, of the mode choice process within the BEAM framework. Words in bold are meant to highlight specific classes or methods from within Java.
+
+*Steps in the Mode Choice Process:*
+
+  1. Default values are put into the config file. These values include parameters and intercepts to utility functions. If default values aren't specified in the config file, the default config file is used.
+  2. In $PopulationAttributes$ from the $AttributesOfIndividual$ Class, the utility calculations and mode choice process begins.
+  3. A $PersonAgent$ is created, and they are given a $ModeChoiceCalculator$.
+  4. When an activity ends, the person is sent to $ChoosesMode$.
+  5. In $ChoosesMode$ a request is sent to the router ($BeamRouter$) for possible routes and mode possibilities to their destination.
+  6. The $BeamRouter$ gives a vector of possible routes between origin and destination for each mode possibility.
+  7. The person then receives the array of routes and sends them to the $ModeChoiceMultinomialLogit$ class.
+  8. In $ModeChoiceMultinomialLogit$ the utility for each alternative is calculated. The generalized travel time and generalized travel cost are calculated as well.
+  9. The utility values calculated form $ModeChoiceMultinomialLogit$ are then fed into $MultinomialLogit$ as input data, where the outcome mode is chosen probabilistically based on utility values. The input config values help do the actual sampling in this class as well.
+  10. The person then receives their final mode after it is calculated probabilistically in $MultinomialLogit$; aka, the mode choice event is thrown, and the person is sent on their way. 
+  11. $Events$: Depending on the mode choice, the departure, personEntersVehicle, pathTraversal, etc. events are thrown as well. 
+
+### Config and Default Values
+The config file allows the specification of multiple intercept parameters, that are used in the utility equations. In most config files, the intercept parameters for each mode option are specified
+
+If not all parameters are specified in the config for the scenario, the $beam-template.conf$ has all the default values for any scenario. According to Zach, if you change a default here or add a new config parameter you can update the rest of the BEAM code to read and store that value by running the gradle task 'generateConfig'. 
+
+**Path:** src/main/resources/beam-template.conf
+
+### PopulationAttributes and AttributesOfIndividual
+I don't know much about the $AttributesOfIndividual$ class in the $PopulationAttributes$ trait. I do know, however, that the start of most of the utility calculations occur here. Also notice how the $ModeChoiceMultinomialLogit$ and $ModeChoiceCalculator$ classes are imported here. Zach says that the specific mode choice process that begins in this class is quite complex as well. I will not go into any more details about this class. 
+
+**Path:** src/main/scala/beam/sim/population/PopulationAttributes.scala
+
+### PersonAgent
+The $PersonAgent$ class represents a person within the BEAM framework. They have many attributes, some of which are  $ModeChoiceCalculator$, $TransportNetwork$, $Plan$, and many more shown on lines *PersonAgent.scala#234-249*.  
+
+I don't know a bunch about the $PersonAgent$ class, but I beleive that the importance is that they are given a $ModeChoiceCalculator$ and when the activity ends they are sent to $ChoosesMode$. In $ChoosesMode$ they carry out the rest of the most choice process, as explained in the steps above. 
+
+The specific location where they use the $ModeChoiceCalculator$ is in *PersonAgent.scala#961-963*.
+
+**Path:** src/main/scala/beam/agentsim/agents/PersonAgent.scala
+
+### ModeChoiceCalculator
+The $ModeChoiceCalculator$ reads in all the attributes from the config and gives access to specific utility functions (mode and route) from the config.
+
+In the $ModeChoiceCalculator$ object, different algorithm cases are specified as well as what to do in each case. Currently, BEAM uses the *ModeChoiceMultinomialLogit* algorithm. Also, the $ModeChoiceCalculator$ has a call to the method $ModeChoiceMultinomialLogit$.*buildModelFromConfig*. This method will be explained later on, but it is essential to help organize the intercept values. 
+
+Important functions are also created in this object that are used to help determine mode choice. Some examples are *utilityOf*, *getNonTimeCost*, and *computeAllDayUtility*. 
+
+**Path:** src/main/scala/beam/agentsim/agents/modalbehaviors/ModeChoiceCalculator.scala
+
+### ChoosesMode
+The $ChoosesMode$ class is quite complex and long, but basically in this class, the $PersonAgent$ connects with their $modeChoiceCalculator$, the $BeamRouter$, and $ModeChoiceMultinomialLogit$ to ultimately select their mode and route. 
+
+In *ChoosesMode.scala#968* the $modeChoiceCalculator$ object gets some values passed through it. The $BeamRouter$ I think is used throughout in various places in the class, and I don't quite understand the details behind it. 
+
+Overall, I think it is safe to say that the mode is utilimately chosen through the code written in this class.
+
+**Path:** src/main/scala/beam/agentsim/agents/modalbehaviors/ChoosesMode.scala
+
+### BeamRouter
+The $BeamRouter$ recieves a request from $ChoosesMode$ for a vector of potential routes with each mode available from their origin to their destination. I don't completely understand the code behind this, but it seems that the case classes *RoutingRequest* and *RoutingResponse* are important classes.
+
+In *RoutingRequest* the information from $ChoosesMode$ is recieved. Various values such as origin and desitnation locations, departurn time, person id, attributes of the individual, and more are recieved. This can be seen on *BeamRouter.scala#449-464*. 
+
+In *RoutingResponse* the calculated routes and modes are sent back to $ChoosesMode$. Specifically, the *itineraries*, or the vector of planned routes, is the parameter that is calculated. Details relating to this class can be seen on *BeamRouter.scala#476-481*.
+
+**Path:** src/main/scala/beam/router/BeamRouter.scala
+
+### ModeChoiceMultinomialLogit
+The $ModeChoiceMultinomialLogit$ class is important in that it includes a variety of methods that are useful for storing and calculating the utility values. In order to organize its contents, the important methods are mentioned and explained below:
+
+  - __*buildModelFromConfig:*__ This method stores all the configs parameter and intercept values for the utility equations. It stores all the config intercept values into a double array/map variable called *mnlUtilityFunctions*. It uses the class $UtilityFunctionOperation$ to help store the intercept values. *The buildModelFromConfig* method also defines three other values, *params*, *commonUtility*, and *scale_factor*. *Params* is a pointer to the parameters set in the config. The *commonUtility* is a map defining the cost multiplier as -1. The *scale_factor* is also a pointer to the scale factor set in the config, and it is set to something other than 1 if units other than dollars are used. The last thing the *buildModelFromConfig* method does is call the $MultinomialLogit$ class and passes through three values: *mnlUtilityFunctions*, *commonUtility*, and *scale_factor*. This method can be seen on line *ModeChoiceMultinomialLogit.scala#413*.   
+  - $UtilityFunctionOperation$: This is a simple object that is used to store values as intercept, asc, or multiplier types. Basically, every parameter defined is given one of these three strings to help define it. 
+  - __*createModeChoiceOccuredEvent*__: This function does something to organize the mode choice events. Generalized time functions are also defined. 
+  - __*altstoModeCostTimeTransfers*__: This function does some incentivized cost stuff, vehicle counting, and idk what. 
+  - __*utility of*__ and __*computeAllDayutility*__: These functions are overridden and have something to do with computing the utility and getting the utility of alternatives.
+  - __*attributes*__: This function is defined, basically as a map holding *transfer*, *cost*, and *transitOccupancyLevel* variables. 
+
+Overall, this class is very important and includes a variety of important methods that are used toward the storing and calculating of utility values.
+
+**Path:** src/main/scala/beam/agentsim/agents/choice/mode/ModeChoiceMultinomialLogit.scala
+
+### MultinomialLogit
+The $MultinomialLogit$ class is where the actual multinomial logic equation is used. Utility values are calculated here, as well as the probability of each mode to be used. In other words, this class is used to calculate the utility alternatives and then randomly select a probability, calculated from the multinomial logit function, to determine the user’s mode. As a way to explain its contents in details, we will co through the methods.
+
+  - __*getUtilityofAlternative*__: This method calculates the utility of the provided alternative based on the utility functions provided during the initialization of the MultinomialLogit model. If the provided utility functions are not able to evaluate the provided alternative. (e.g. there is no function for the provided alternative) the provided utility is -1E100). This method also calculates two values, a *commonUtility* values and an *alternativeUtility* value. It then adds them together and creates / maybe returns the *totalUtility* value.
+  - __*getExpectedMaximumUtility*__: The comment says that this function gets the expected maximum utility over a set of types A. In other words, it does a for loop to loop through all the alternative values. It then calculates utility values using the *getUtilityOfAlternative* function and then returns that calculated utility values times the scale factor. I assume it is getting the maximum utility using the *getUtilityOfAlternative* function to calculate the max. 
+  - __*calcAlternativesWithUtility*__: I don’t quite understand this method except that it evaluates the alternatives in some way. It calls the *getUtilityOfAlternative* class and then creates a variables named *accumulator* for some reason. I assume it returns some set of utility alternatives, for the *sampleAlternative* method to use. 
+  - __*sampleAlternative*__: The first method with this name simply calls the second one and puts in two parameters. The first parameter is the returned value of *calcAlternativesWithUtility* which uses the mapped set of alternatives, and the second one is the random value.	The second method, I believe, is used to calculate the probabilities of each alternative utility, and select one at random. More specifically, the comments help explain what is happening in detail. First, if the alternative is infinite, something happens to these values. If not, the denominator is used for transforming utility values into draw probabilities. Then, the cumulative distribution function is built by transforming the alternatives into a list in ascending order of thresholds (descending order of alternative utilities by successive draw thresholds). In the end the values are discarded while the probability's draw threshold is below or equal the random draw; this leaves us with a list who's first element is the largest just below or equal the draw value. I believe that that is the value that is returned as the mode that will be used!
+  
+The $MultinomialLogit$ class is the backbone to the actual calculations are are completed when using a multinomial logit function. Specifically, the equation that is used in this class is
+
+\begin{equation}
+  P_i = \frac{e^{V_i}}{\sum_{j \in J}e^{V_j}} (\#eq:mnl11)
+\end{equation}
+
+**Path:** src/main/scala/beam/agentsim/agents/choice/logit/MultinomialLogit.scala
+
+### Events
+I will not go into detail about the various classes that related to calculating events. One important note is that the mode choice is related to an array of different event features, some of which are written in step 11. 
+
+

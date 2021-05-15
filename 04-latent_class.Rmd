@@ -1,7 +1,5 @@
 # Latent Class Mode Choice {#chap4}
 
-## Theory
-
 ## Framework in BEAM
 
 ```{r setup, include = FALSE}

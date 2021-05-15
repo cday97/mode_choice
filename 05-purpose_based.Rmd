@@ -1,7 +1,5 @@
 # Purpose Based Mode Choice {#chap5}
 
-## Theory
-
 ## Framework in ActivitySim
 
 
