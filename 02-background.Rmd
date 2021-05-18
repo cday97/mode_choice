@@ -112,15 +112,19 @@ In conclusion, it is safe to say that the multinomial logit model is not perfect
 ## Nested Logit Model
 The Multinomial Logit model distributes choice probabilities equally. A way to visually represent this can be shown below. 
 
-```{r,echo=FALSE}
-knitr::include_graphics("pics/mnl_tree.png")
-```
+<center>
+
+  ![Figure 2.1: An Example of a Multinomial Logit Model](pics/mnl_tree.png)
+  
+</center>
 
 A Nested Logit Model, on the other hand, does not distribute choice probabilities equally. It instead, groups together certain mode choices under the same subset of probabilitiy. A way to visually represent this can be shown below.
 
-```{r,echo=FALSE}
-knitr::include_graphics("pics/nl_tree.png")
-```
+<center>
+
+  ![Figure 2.2: An Example of a Nested Logit Model](pics/nl_tree.png)
+  
+</center>
 
 Mathematically, the nested logit model choice probability of an alternative can be shown below
 
@@ -138,9 +142,11 @@ When $\lambda = 1$, no observable correlation exists between the choices, and th
 ## Latent Class Model
 Another way to surpass the limitation of the MNL model is to use a Latent Class Choice Model (LCM). The LCM is especially useful for modeling "indivdual choice heterogeneity based on alternative attributes and characterisitics" [@regy2016]. It maximizes the individual's choice while minimizing error by  dividing up individuals into select, probabilistic groups based on their attributes and their likelihood of being part of that group. An example of how this grouping looks like visually is shown below. 
 
-```{r,echo=FALSE}
-knitr::include_graphics("pics/lcm_tree.png")
-```
+<center>
+
+  ![Figure 2.3: An Example of a Latent Class Choice Model](pics/lcm_tree.png)
+  
+</center>
 
 "FIGURE 1. Graphical model associated with a latent class model with a random effect in the latent class distribution." (https://www.semanticscholar.org/paper/7.-Multilevel-Latent-Class-Models-Vermunt/b418c9829e31c59ee2b25d1a19293a1ce74820eb/figure/0)
 
