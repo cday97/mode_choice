@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 3 Multinomial Logit Model in BEAM | A Detailed Explanation of Mode Choice in BEAM</title>
+  <meta name="description" content="A short description" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 3 Multinomial Logit Model in BEAM | A Detailed Explanation of Mode Choice in BEAM" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A short description" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 3 Multinomial Logit Model in BEAM | A Detailed Explanation of Mode Choice in BEAM" />
+  
+  <meta name="twitter:description" content="A short description" />
+  
+
+
+
+<meta name="date" content="2021-05-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap2.html"/>
+<link rel="next" href="chap4.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Short Title</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="chap2.html"><a href="chap2.html"><i class="fa fa-check"></i><b>2</b> Background</a><ul>
+<li class="chapter" data-level="2.1" data-path="chap2.html"><a href="chap2.html#discrete-choice-model"><i class="fa fa-check"></i><b>2.1</b> Discrete Choice Model</a></li>
+<li class="chapter" data-level="2.2" data-path="chap2.html"><a href="chap2.html#utility-based-choice-theory"><i class="fa fa-check"></i><b>2.2</b> Utility-based Choice Theory</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap2.html"><a href="chap2.html#utility-function"><i class="fa fa-check"></i><b>2.2.1</b> Utility Function</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap2.html"><a href="chap2.html#observed-portion-of-the-utility-function"><i class="fa fa-check"></i><b>2.2.2</b> Observed Portion of the Utility Function</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap2.html"><a href="chap2.html#unobserved-portion-of-the-utility-function"><i class="fa fa-check"></i><b>2.2.3</b> Unobserved Portion of the Utility Function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chap2.html"><a href="chap2.html#chap2.3"><i class="fa fa-check"></i><b>2.3</b> Multinomial Logit Model</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="chap2.html"><a href="chap2.html#properties-of-mnl-equation"><i class="fa fa-check"></i><b>2.3.1</b> Properties of MNL Equation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap2.html"><a href="chap2.html#nested-logit-model"><i class="fa fa-check"></i><b>2.4</b> Nested Logit Model</a></li>
+<li class="chapter" data-level="2.5" data-path="chap2.html"><a href="chap2.html#latent-class-model"><i class="fa fa-check"></i><b>2.5</b> Latent Class Model</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="chap2.html"><a href="chap2.html#mathematical-representation-of-lcm"><i class="fa fa-check"></i><b>2.5.1</b> Mathematical Representation of LCM</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap2.html"><a href="chap2.html#purpose-based-model"><i class="fa fa-check"></i><b>2.6</b> Purpose Based Model</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap3-3.html"><a href="chap3-3.html"><i class="fa fa-check"></i><b>3</b> Multinomial Logit Model in BEAM</a><ul>
+<li class="chapter" data-level="3.1" data-path="chap3-3.html"><a href="chap3-3.html#process-in-beam"><i class="fa fa-check"></i><b>3.1</b> Process in BEAM</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="chap3-3.html"><a href="chap3-3.html#config-and-default-values"><i class="fa fa-check"></i><b>3.1.1</b> Config and Default Values</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap3-3.html"><a href="chap3-3.html#populationattributes-and-attributesofindividual"><i class="fa fa-check"></i><b>3.1.2</b> PopulationAttributes and AttributesOfIndividual</a></li>
+<li class="chapter" data-level="3.1.3" data-path="chap3-3.html"><a href="chap3-3.html#personagent"><i class="fa fa-check"></i><b>3.1.3</b> PersonAgent</a></li>
+<li class="chapter" data-level="3.1.4" data-path="chap3-3.html"><a href="chap3-3.html#modechoicecalculator"><i class="fa fa-check"></i><b>3.1.4</b> ModeChoiceCalculator</a></li>
+<li class="chapter" data-level="3.1.5" data-path="chap3-3.html"><a href="chap3-3.html#choosesmode"><i class="fa fa-check"></i><b>3.1.5</b> ChoosesMode</a></li>
+<li class="chapter" data-level="3.1.6" data-path="chap3-3.html"><a href="chap3-3.html#beamrouter"><i class="fa fa-check"></i><b>3.1.6</b> BeamRouter</a></li>
+<li class="chapter" data-level="3.1.7" data-path="chap3-3.html"><a href="chap3-3.html#modechoicemultinomiallogit"><i class="fa fa-check"></i><b>3.1.7</b> ModeChoiceMultinomialLogit</a></li>
+<li class="chapter" data-level="3.1.8" data-path="chap3-3.html"><a href="chap3-3.html#multinomiallogit"><i class="fa fa-check"></i><b>3.1.8</b> MultinomialLogit</a></li>
+<li class="chapter" data-level="3.1.9" data-path="chap3-3.html"><a href="chap3-3.html#events"><i class="fa fa-check"></i><b>3.1.9</b> Events</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap4.html"><a href="chap4.html"><i class="fa fa-check"></i><b>4</b> Latent Class Mode Choice</a><ul>
+<li class="chapter" data-level="4.1" data-path="chap4.html"><a href="chap4.html#framework-in-beam"><i class="fa fa-check"></i><b>4.1</b> Framework in BEAM</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap5.html"><a href="chap5.html"><i class="fa fa-check"></i><b>5</b> Purpose Based Mode Choice</a><ul>
+<li class="chapter" data-level="5.1" data-path="chap5.html"><a href="chap5.html#framework-in-activitysim"><i class="fa fa-check"></i><b>5.1</b> Framework in ActivitySim</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>6</b> Conclusions</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Detailed Explanation of Mode Choice in BEAM</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap3.3" class="section level1">
+<h1><span class="header-section-number"> 3</span> Multinomial Logit Model in BEAM</h1>
+<p>The first mode choice model available in BEAM is a simple multinomial logit mode choice model. This model takes in certain parameters and inputs and uses them to probabilistically estimate the likely mode choice for each user in their repsective situation. A detailed explanation of the details behind a multinomial logit choice model can be shown in Chapter <a href="chap2.html#chap2">2</a>.</p>
+<p>Mathematically, the obersverable utility equation for the simple multinomial logit model in BEAM can be shown as,</p>
+<p><span class="math display" id="eq:ml1">\[\begin{equation}
+  V_j = ASC_j + \beta_{cost}(cost) + \beta_{time}(time) + \beta_{xfer}(numtransfers) \tag{3.1}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(j\)</span> is the modal alternative,</li>
+<li><span class="math inline">\(V_j\)</span> is the obervable portion of the utility equation,</li>
+<li><span class="math inline">\(ASC_J\)</span> is the alternative specific constant, and</li>
+<li><span class="math inline">\(\beta_{cost}\)</span>, <span class="math inline">\(\beta_{time}\)</span>, and <span class="math inline">\(\beta_{xfer}\)</span> are generic coefficients for the cost, time, and number of transfer parameters.</li>
+</ul>
+<p>All things considered, the observable utility equation for BEAM’s multinomial logit model is pretty simple. There are only three <span class="math inline">\(\beta\)</span> coefficients along with one alternative specific constant. Also, in BEAM, utility equations are specific to different mode options. For example, the utility for car, walk, bike, etc. will all be different. Yes Equation <a href="chap3-3.html#eq:ml1">(3.1)</a> shows the overarching utility equations, but the parameters differ between different modes.</p>
+<p>The MNL equation is used in BEAM, but how exactly is it implemented? There are many steps, including the use of the utility equation, explaining the complete mode choice process in BEAM.</p>
+<div id="process-in-beam" class="section level2">
+<h2><span class="header-section-number">3.1</span> Process in BEAM</h2>
+<p>Understanding the current mode choice process in BEAM is essential to potentially updating or changing it in the future. In order to explain the mode choice process fully though, first a rough outline is shown, followed by details about specific parts of the steps. The idea behind the steps are to help guide BEAM users through the complex code that entangles the mode choice process itself.</p>
+<p>Below are 11 steps, roughly from beginning to end, of the mode choice process within the BEAM framework. Words in bold are meant to highlight specific classes or methods from within Java.</p>
+<p><em>Steps in the Mode Choice Process:</em></p>
+<ol style="list-style-type: decimal">
+<li>Default values are put into the config file. These values include parameters and intercepts to utility functions. If default values aren’t specified in the config file, the default config file is used.</li>
+<li>In <span class="math inline">\(PopulationAttributes\)</span> from the <span class="math inline">\(AttributesOfIndividual\)</span> Class, the utility calculations and mode choice process begins.</li>
+<li>A <span class="math inline">\(PersonAgent\)</span> is created, and they are given a <span class="math inline">\(ModeChoiceCalculator\)</span>. (PersonAgent.scala#233)</li>
+<li>When an activity ends, the person is sent to <span class="math inline">\(ChoosesMode\)</span>.</li>
+<li>In <span class="math inline">\(ChoosesMode\)</span> a request is sent to the router (<span class="math inline">\(BeamRouter\)</span>) for possible routes and mode possibilities to their destination.</li>
+<li>The <span class="math inline">\(BeamRouter\)</span> gives a vector of possible routes between origin and destination for each mode possibility.</li>
+<li>The person then receives the array of routes and sends them to the <span class="math inline">\(ModeChoiceMultinomialLogit\)</span> class.</li>
+<li>In <span class="math inline">\(ModeChoiceMultinomialLogit\)</span> the utility for each alternative is calculated. The generalized travel time and generalized travel cost are calculated as well.</li>
+<li>The utility values calculated form <span class="math inline">\(ModeChoiceMultinomialLogit\)</span> are then fed into <span class="math inline">\(MultinomialLogit\)</span> as input data, where the outcome mode is chosen probabilistically based on utility values. The input config values help do the actual sampling in this class as well.</li>
+<li>The person then receives their final mode after it is calculated probabilistically in <span class="math inline">\(MultinomialLogit\)</span>; aka, the mode choice event is thrown, and the person is sent on their way.</li>
+<li><span class="math inline">\(Events\)</span>: Depending on the mode choice, the departure, personEntersVehicle, pathTraversal, etc. events are thrown as well.</li>
+</ol>
+<div id="config-and-default-values" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Config and Default Values</h3>
+<p>The config file allows the specification of multiple intercept parameters, that are used in the utility equations. In most config files, the intercept parameters for each mode option are specified</p>
+<p>If not all parameters are specified in the config for the scenario, the <span class="math inline">\(beam-template.conf\)</span> has all the default values for any scenario. The path to this file is <em>src/main/resources/beam-template.conf</em>. According to Zach, if you change a default here or add a new config parameter you can update the rest of the BEAM code to read and store that value by running the gradle task ‘generateConfig’.</p>
+</div>
+<div id="populationattributes-and-attributesofindividual" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> PopulationAttributes and AttributesOfIndividual</h3>
+<p>I don’t know much about the <span class="math inline">\(AttributesOfIndividual\)</span> class in the <span class="math inline">\(PopulationAttributes\)</span> trait. I do know, however, that the start of most of the utility calculations occur here. The path to <span class="math inline">\(PopulationAttributes\)</span> is <em>src/main/scala/beam/sim/population/PopulationAttributes.scala</em>. Also notice how the <span class="math inline">\(ModeChoiceMUltinomialLogit\)</span> and <span class="math inline">\(ModeChoiceCalculator\)</span> classes are imported here. Zach says that the specific mode choice process that begins in this class is quite complex as well. I will not go into any more details about this class.</p>
+</div>
+<div id="personagent" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> PersonAgent</h3>
+</div>
+<div id="modechoicecalculator" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> ModeChoiceCalculator</h3>
+<p>The <strong>ModeChoiceCalculator</strong> reads in all the attributes from the config and gives access to specific utility functions (mode and route) from the config.</p>
+</div>
+<div id="choosesmode" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> ChoosesMode</h3>
+</div>
+<div id="beamrouter" class="section level3">
+<h3><span class="header-section-number">3.1.6</span> BeamRouter</h3>
+</div>
+<div id="modechoicemultinomiallogit" class="section level3">
+<h3><span class="header-section-number">3.1.7</span> ModeChoiceMultinomialLogit</h3>
+</div>
+<div id="multinomiallogit" class="section level3">
+<h3><span class="header-section-number">3.1.8</span> MultinomialLogit</h3>
+</div>
+<div id="events" class="section level3">
+<h3><span class="header-section-number">3.1.9</span> Events</h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["project_name.pdf", "project_name.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

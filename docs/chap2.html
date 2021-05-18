@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 2 Background | The Mode Choice Models of BEAM and ActivitySim</title>
+  <meta name="description" content="A short description" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 2 Background | The Mode Choice Models of BEAM and ActivitySim" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A short description" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 2 Background | The Mode Choice Models of BEAM and ActivitySim" />
+  
+  <meta name="twitter:description" content="A short description" />
+  
+
+
+
+<meta name="date" content="2021-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="chap3.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Short Title</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="chap2.html"><a href="chap2.html"><i class="fa fa-check"></i><b>2</b> Background</a><ul>
+<li class="chapter" data-level="2.1" data-path="chap2.html"><a href="chap2.html#discrete-choice-model"><i class="fa fa-check"></i><b>2.1</b> Discrete Choice Model</a></li>
+<li class="chapter" data-level="2.2" data-path="chap2.html"><a href="chap2.html#utility-based-choice-theory"><i class="fa fa-check"></i><b>2.2</b> Utility-based Choice Theory</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap2.html"><a href="chap2.html#utility-function"><i class="fa fa-check"></i><b>2.2.1</b> Utility Function</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap2.html"><a href="chap2.html#observed-portion-of-the-utility-function"><i class="fa fa-check"></i><b>2.2.2</b> Observed Portion of the Utility Function</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap2.html"><a href="chap2.html#unobserved-portion-of-the-utility-function"><i class="fa fa-check"></i><b>2.2.3</b> Unobserved Portion of the Utility Function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chap2.html"><a href="chap2.html#chap23"><i class="fa fa-check"></i><b>2.3</b> Multinomial Logit Model</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="chap2.html"><a href="chap2.html#properties-of-mnl-equation"><i class="fa fa-check"></i><b>2.3.1</b> Properties of MNL Equation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap2.html"><a href="chap2.html#nested-logit-model"><i class="fa fa-check"></i><b>2.4</b> Nested Logit Model</a></li>
+<li class="chapter" data-level="2.5" data-path="chap2.html"><a href="chap2.html#latent-class-model"><i class="fa fa-check"></i><b>2.5</b> Latent Class Model</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="chap2.html"><a href="chap2.html#mathematical-representation-of-lcm"><i class="fa fa-check"></i><b>2.5.1</b> Mathematical Representation of LCM</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap2.html"><a href="chap2.html#purpose-based-model"><i class="fa fa-check"></i><b>2.6</b> Purpose Based Model</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap3.html"><a href="chap3.html"><i class="fa fa-check"></i><b>3</b> Mode Choice Models of BEAM</a><ul>
+<li class="chapter" data-level="3.1" data-path="chap3.html"><a href="chap3.html#multinomial-logit-mode-choice"><i class="fa fa-check"></i><b>3.1</b> Multinomial Logit Mode Choice</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="chap3.html"><a href="chap3.html#process-in-beam"><i class="fa fa-check"></i><b>3.1.1</b> Process in BEAM</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap3.html"><a href="chap3.html#config-and-default-values"><i class="fa fa-check"></i><b>3.1.2</b> Config and Default Values</a></li>
+<li class="chapter" data-level="3.1.3" data-path="chap3.html"><a href="chap3.html#populationattributes-and-attributesofindividual"><i class="fa fa-check"></i><b>3.1.3</b> PopulationAttributes and AttributesOfIndividual</a></li>
+<li class="chapter" data-level="3.1.4" data-path="chap3.html"><a href="chap3.html#personagent"><i class="fa fa-check"></i><b>3.1.4</b> PersonAgent</a></li>
+<li class="chapter" data-level="3.1.5" data-path="chap3.html"><a href="chap3.html#modechoicecalculator"><i class="fa fa-check"></i><b>3.1.5</b> ModeChoiceCalculator</a></li>
+<li class="chapter" data-level="3.1.6" data-path="chap3.html"><a href="chap3.html#choosesmode"><i class="fa fa-check"></i><b>3.1.6</b> ChoosesMode</a></li>
+<li class="chapter" data-level="3.1.7" data-path="chap3.html"><a href="chap3.html#beamrouter"><i class="fa fa-check"></i><b>3.1.7</b> BeamRouter</a></li>
+<li class="chapter" data-level="3.1.8" data-path="chap3.html"><a href="chap3.html#modechoicemultinomiallogit"><i class="fa fa-check"></i><b>3.1.8</b> ModeChoiceMultinomialLogit</a></li>
+<li class="chapter" data-level="3.1.9" data-path="chap3.html"><a href="chap3.html#multinomiallogit"><i class="fa fa-check"></i><b>3.1.9</b> MultinomialLogit</a></li>
+<li class="chapter" data-level="3.1.10" data-path="chap3.html"><a href="chap3.html#events"><i class="fa fa-check"></i><b>3.1.10</b> Events</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap3.html"><a href="chap3.html#latent-class-mode-choice"><i class="fa fa-check"></i><b>3.2</b> Latent Class Mode Choice</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap4.html"><a href="chap4.html"><i class="fa fa-check"></i><b>4</b> Mode Choice Models of ActivitySim</a><ul>
+<li class="chapter" data-level="4.1" data-path="chap4.html"><a href="chap4.html#tour-mode-choice"><i class="fa fa-check"></i><b>4.1</b> Tour Mode Choice</a></li>
+<li class="chapter" data-level="4.2" data-path="chap4.html"><a href="chap4.html#trip-mode-choice"><i class="fa fa-check"></i><b>4.2</b> Trip Mode Choice</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="comparison-between-beam-and-activitysim.html"><a href="comparison-between-beam-and-activitysim.html"><i class="fa fa-check"></i><b>5</b> Comparison between BEAM and ActivitySim</a><ul>
+<li class="chapter" data-level="5.1" data-path="comparison-between-beam-and-activitysim.html"><a href="comparison-between-beam-and-activitysim.html#available-modes"><i class="fa fa-check"></i><b>5.1</b> Available Modes</a></li>
+<li class="chapter" data-level="5.2" data-path="comparison-between-beam-and-activitysim.html"><a href="comparison-between-beam-and-activitysim.html#mode-choice-parameters"><i class="fa fa-check"></i><b>5.2</b> Mode Choice Parameters</a></li>
+<li class="chapter" data-level="5.3" data-path="comparison-between-beam-and-activitysim.html"><a href="comparison-between-beam-and-activitysim.html#questions"><i class="fa fa-check"></i><b>5.3</b> Questions</a></li>
+<li class="chapter" data-level="5.4" data-path="comparison-between-beam-and-activitysim.html"><a href="comparison-between-beam-and-activitysim.html#possible-methods"><i class="fa fa-check"></i><b>5.4</b> Possible Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Mode Choice Models of BEAM and ActivitySim</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap2" class="section level1">
+<h1><span class="header-section-number"> 2</span> Background</h1>
+<p>Predicting people’s choices can be difficult.</p>
+<div id="discrete-choice-model" class="section level2">
+<h2><span class="header-section-number">2.1</span> Discrete Choice Model</h2>
+<p>A discete choice model is a model that predicts choices between two or more discrete alternatives within a choice set. In other words, it answers the question “Which one?” instead of “How much?”; (continuous choice models answer the question “How much?”). Discrete choice models are often used to predict common human behaviors relating to any decision that has a finite number of options, like which mode of transportation an individual will use (Wikepedia).</p>
+<p>The choice set defines the list of alternatives available to the individual. The alternatives must meet certain criteria to be a part of the choice. Specifically, three requirements must be met:</p>
+<ol style="list-style-type: decimal">
+<li>The set of alternatives must be <em>collectively exhaustive</em>. This means that no other alternative can be chosen that exists outside the specified set.</li>
+<li>The alternatives must be <em>mutually exclusive</em>. This means that only one alternative can be chosen. If one is chosen, another one cannot be chosen simultaneously.</li>
+<li>The set of alternatives must include a finite number of alternatives (Wikepedia).</li>
+</ol>
+<p>Some exceptions do exist however. In the case of transportation mode choice, a combination of modes is possible (i.e. an individual can drive to the train station). Although this is true, no user can be on the train and in the car at the same time. They can, however, use two modes of transportation for any one trip. It brings about one of the many complexities that exist in discrete choice modeling, and especially the complexities of mode choice modeling. Usually though, any model that predicts the choice of an individual from a set of alternatives that meet the above choice set requirements is considered to be a discrete choice model.</p>
+<p>Discrete choice models determine the probability of any one alternative being chosen by an individual. Many discrete choice models use utility theory as a way to define the choice of alternatives in a mathematical way; this helps calculate the probability of each alternative. Mode choice transportation models use utility-based choice theory.</p>
+</div>
+<div id="utility-based-choice-theory" class="section level2">
+<h2><span class="header-section-number">2.2</span> Utility-based Choice Theory</h2>
+<p>“Utility is an indicator of value to an individual” <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>. For example, when an individual makes a decision, often times they <em>weigh their options</em>. In the end, they chose the option that they value the most. In other words, and in economics, people choose the option that has the highest utility value to them.</p>
+<div id="utility-function" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Utility Function</h3>
+<p>The utility function, <span class="math inline">\(U\)</span>, is a function that represents the same idea expressed above. The alternative, <span class="math inline">\(i\)</span>, is chosen if and only if the alternative, <span class="math inline">\(i\)</span>, has the highest utility value amoung all alternative utility values, <span class="math inline">\(j\)</span>, within an individual’s choice set, <span class="math inline">\(J\)</span>. In mathematical terms, alternative <span class="math inline">\(i\)</span> is chosen if <span class="math inline">\(U_i &gt; U_j, \forall j \neq i \in J.\)</span></p>
+<p>In addition, the utility, <span class="math inline">\(U\)</span>, is composed up of two parts. The first part includes attributes that can be directly measured and modeled (e.i. travel cost and travel time). The second part includes attributes that are unmeasurable and difficult to model (e.i how much a person loves riding their bike). Therefore, <span class="math inline">\(U\)</span> is composed up of a measureable portion, <span class="math inline">\(V_i\)</span>, and an unmeasurable portion, <span class="math inline">\(e_i\)</span> <span class="citation">(Macfarlane <a href="#ref-mac-urb2020" role="doc-biblioref">2020</a><a href="#ref-mac-urb2020" role="doc-biblioref">b</a>)</span>.</p>
+<p><span class="math display" id="eq:util1">\[\begin{equation} 
+  U_i = V_i + e_i \tag{2.1} 
+\end{equation}\]</span></p>
+<p>Understanding this, the mathematical choice can be rewritten. Alternative <span class="math inline">\(i\)</span> is chosen if</p>
+<p><span class="math display" id="eq:util21">\[\begin{equation} 
+  V_i + e_i &gt; V_j + e_j, \forall j \neq i \in J \tag{2.2} \end{equation}\]</span>
+<span class="math display" id="eq:util22">\[\begin{equation} 
+  V_i - V_j &gt; e_j - e_i, \forall j \neq i \in J \tag{2.3} \end{equation}\]</span></p>
+<p>or, if the difference in the measured, or observed, utility is greater than the difference in the unmeasured, or unobserved, error <span class="citation">(Macfarlane <a href="#ref-mac-urb2020" role="doc-biblioref">2020</a><a href="#ref-mac-urb2020" role="doc-biblioref">b</a>)</span>. Furthermore, to better comprehend the utility function, the details behind what makes up the observed and unobserved portion of the utility function should be explored.</p>
+</div>
+<div id="observed-portion-of-the-utility-function" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Observed Portion of the Utility Function</h3>
+<p>The observed utility is composed of data which the analyst has previous observed. It can be expressed as a mathematical function of the alternative’s attributes as well as the decision maker’s characteristics <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>. The function is also made up of parameters that are estimated during the modeling process. Usually, the observed utility takes a linear form, <span class="math inline">\(V_i = \alpha_i + \beta X_i +\hat{\beta_i}C.\)</span></p>
+<p>Three seperate observed utility alternatives are displayed to show an example. They refer to a mode choice model. The three modes in consideration are car, transit, and bike.</p>
+<ul>
+<li><span class="math inline">\(V_{car} = -0.05(time_c) - 0.1(cost_c)\)</span></li>
+<li><span class="math inline">\(V_{transit} = -4.0 -0.05(time_t) - 0.1(cost_t) - 1.8(high\space income)\)</span></li>
+<li><span class="math inline">\(V_{bike} = -4.5 -0.05(time_b) - 0.1(cost_b) - 0.6(high\space income)\)</span></li>
+</ul>
+<p>There are three basic variables that exist within the observed utility <span class="citation">(Macfarlane <a href="#ref-mac-urb2020" role="doc-biblioref">2020</a><a href="#ref-mac-urb2020" role="doc-biblioref">b</a>)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><em>Alternative-Specific Constants</em> (<span class="math inline">\(\alpha_i\)</span>): These are constant values that control for the observable difference between each different alternative. If everything else is equal, these constants set each alternative apart. One alternative usually sets <span class="math inline">\(\alpha = 0,\)</span> and thus becomes the <em>reference alternative</em>. In the example above, <span class="math inline">\(V_{car}\)</span> is the referance alternative. <span class="math inline">\(\alpha_{transit} = - 4.0\)</span> and <span class="math inline">\(\alpha_{bike} = -4.5\)</span>.</li>
+<li><em>Generic Coefficients</em> (<span class="math inline">\(\beta\)</span>): These are coefficient values that stay constant for all alternatives. For example, cost and time have generic coefficient values. In the example above, <span class="math inline">\(\beta_{time} = - 0.05\)</span> and <span class="math inline">\(\beta_{cost} = -0.1.\)</span></li>
+<li><em>Alternative-Specific Coefficient</em> (<span class="math inline">\(\hat{\beta}\)</span>): These are coefficient values that change between each alternative. The coefficient usually represents the value of a specific individual attribute. In the example above, it is the coefficient before the <span class="math inline">\(high \space income\)</span> value. <span class="math inline">\(\hat{\beta}_{transit} = -1.8\)</span> and <span class="math inline">\(\hat{\beta}_{bike} = -0.6.\)</span></li>
+</ol>
+<p>The observed utility joins together measurable data to form an overall utility value. In deterministic choice theory, the observed utility is all that is modeled. The highested utility value is simply chosen as the individual’s decision. This leaves no room for uncertainty in the predictions. In probabilistic choice theory though, uncertainty is accounted for.</p>
+</div>
+<div id="unobserved-portion-of-the-utility-function" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Unobserved Portion of the Utility Function</h3>
+<p>If all aspects and attributes of the decision making process were known to analysts, a deterministic choice model would be an accurate representation for modeling discrete choices. However, especially in the case of mode choice, uncertainly must be taken into account because not all aspects of the internal decision making process are known.</p>
+<p>As explained above, probabilistic choice theory includes the unobserved utility, <span class="math inline">\(e_i\)</span>, within the utility function. Specifically, <span class="math inline">\(e_i\)</span> accounts for three possible sources of error within the deterministic choice model theory <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>The observed data may not be complete or fully accurate surrounding the attributes of the alternatives. For example, the generic coefficients surrounding the cost and time of a particular mode may not be correct.</li>
+<li>The observed data may not accurately represent the exact utility function that the individual uses when making a decision. For example, the analyst may not know the likelihood of getting a certain seat on the bus at a certain time of the day whereas the individual is sure to know this.</li>
+<li>The observed data may not include individual attributes that occur during specific circumstances. For example, if an individual has family visiting in town, their mode choice may be different than usual.</li>
+</ol>
+<p>Analyst do not have sufficient knowledge to be able to predict individual’s decisions without error. There is no realistic possibility of obtaining complete information on each person’s alternative set for each decision. “Mode choice models should take a form that recognizes and accommodates the analyst’s lack of information and understanding” <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>. Models should describe population probabilities relating to how individuals will choose alternatives within a choice set instead of only providing the choice of highest utility. As a way of representing the unobserved utility, a random variable is used. Assumptions are then made on the distribution of the random variables for each alternative <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>. Different assumptions lead to different predictions, but a common interpretation of the random variables forms what is known as the Multinomial Logit Model.</p>
+</div>
+</div>
+<div id="chap23" class="section level2">
+<h2><span class="header-section-number">2.3</span> Multinomial Logit Model</h2>
+<p>The mutlinomial logit model is a probability function that determines the probability of any one utility being chosen by an individual. Since analyst’s are unable to determine an individual’s maximum utility value, instead, a probability of each alternative is calculated. The origins of the multinomial logit model arise from assumptions made about the random variables of the unobserved utility. Specifically, there are three assumptions about the error components within the utility function that lead to multinomial logit model <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>The error components are Gumbel, or extreme-value distributed. In statistical and modeling literation, error is usually distributed normally. The Gumbel distribution is similar to a normal distribution, except that it is more computationally friendly; for this reason, the Gumbel distribution is used.</li>
+<li>The error components are independently and identically distributed across all alternatives.</li>
+<li>The error components are independently and identically distributed across all individuals.</li>
+</ol>
+<p>All three assumptions together form the mathematical structure known as the Multinomial Logit Model (MNL). The choice probabilities of each alternative are given as a function of the observed utility of all the alternatives. The mathematical expression of the probability of choosing alternative <span class="math inline">\(i\)</span> from alternatives <span class="math inline">\(j\)</span> in choice set <span class="math inline">\(J\)</span> is:</p>
+<p><span class="math display" id="eq:mnl1">\[\begin{equation}
+  P_i = \frac{e^{V_i}}{\sum_{j \in J}e^{V_j}} \tag{2.4}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(P_i\)</span> is the probability of the alternative <span class="math inline">\(i\)</span> being chosen by an individual and</li>
+<li><span class="math inline">\(V_j\)</span> is the oberved utility of the alternative <span class="math inline">\(j\)</span> <span class="citation">(Macfarlane <a href="#ref-mac-urb2020" role="doc-biblioref">2020</a><a href="#ref-mac-urb2020" role="doc-biblioref">b</a>)</span>.</li>
+</ul>
+<div id="properties-of-mnl-equation" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Properties of MNL Equation</h3>
+<p>An important attribute of the MNL equation is that an increase in the systemic or observed utility will monotomically increase the probability of that same alternative being chosen. The MNL equation also forms a sigmoid or S shape when graphed. In addition, a simple change in the value of one alternative’s utility will have a similarly changing effect on the probability of choosing any other alternatives within the choice set. Although this is true, equal changes across all alternative values will not affect the ratio of one utility to another <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>. These are just a few of the properties that the MNL equation has. A detailed explanation of these properties can be found at [<a href="https://byu-transpolab.github.io/modechoice" class="uri">https://byu-transpolab.github.io/modechoice</a>].</p>
+<p>Another property of the MNL model that is worth going into greater detail over is called the independence of irrelevant alternatives (IIA) property. The IIA property means that the probabilities of the alternatives is only based on the utility of the alternatives. The ratio of probabilities can be writeen mathematically as</p>
+<p><span class="math display" id="eq:mnl2">\[\begin{equation}
+  \frac{P_i}{P_k} = \frac{e^{V_i}}{\sum_{j \in J}e^{V_j}} \times \frac{\sum_{j \in J}e^{V_j}}{1} = \frac{e^{V_i}}{e^{V_k}} \tag{2.5}
+\end{equation}\]</span></p>
+<p>A potential problem that results with the IIA property is that it introduces unreasonable behavior when a new mode choice option is introduced. For example, let’s consider two modes, car and bike, where <span class="math inline">\(V_{car}=0\)</span> and <span class="math inline">\(V_{bus}=1\)</span>. The MNL probabilities and the ratio of the probabilities are</p>
+<p><span class="math display">\[\begin{equation} P_{car} = \frac{e^{1}}{e^{0}+e^{1}} = 0.731 \end{equation}\]</span>
+<span class="math display">\[\begin{equation} P_{bus} = \frac{e^{0}}{e^{0}+e^{1}} = 0.269 \end{equation}\]</span>
+<span class="math display">\[\begin{equation} \frac{P_{car}}{P_{bus}} = 0.368 \end{equation}\]</span></p>
+<p>What happens when a new mode is added? Lets add the Light Rail Transit (LRT) mode with <span class="math inline">\(V_{LRT} = 0.5.\)</span> The choice probabilities and ratios become</p>
+<p><span class="math display">\[\begin{equation} P_{car} = \frac{e^{1}}{e^{0}+e^{1}+e^{0.5}} = 0.506 \end{equation}\]</span>
+<span class="math display">\[\begin{equation} P_{bus} = \frac{e^{0}}{e^{0}+e^{1}+e^{0.5}} = 0.186 \end{equation}\]</span>
+<span class="math display">\[\begin{equation} P_{LRT} = \frac{e^{0.5}}{e^{0}+e^{1}+e^{0.5}} = 0.307 \end{equation}\]</span>
+<span class="math display">\[\begin{equation} \frac{P_{car}}{P_{bus}} = 0.368 \end{equation}\]</span></p>
+<p>The ratio of the probability between car and bus remains constant at <span class="math inline">\(\frac{P_{car}}{P_{bus}}=0.368\)</span> but the individual probabilities of <span class="math inline">\(P_{car}\)</span> and <span class="math inline">\(P_{bus}\)</span> decrease. The LRT passengers in this example were formerly auto and bus passengers in the previous example. Because of the way the MNL model works, “73% of the new light rail passengers were formerly automobile passengers” <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>. This doesn’t make sense though. Most LRT users should come from the similar subset of the population as the people who use buses, not automobiles. Bus passengers and LRT passengers have more in common than car passengers. Of course, some LRT passengers will originally come from car users, but not most of them <span class="citation">(Macfarlane <a href="#ref-mac-mode2020" role="doc-biblioref">2020</a><a href="#ref-mac-mode2020" role="doc-biblioref">a</a>)</span>.</p>
+<p>In conclusion, it is safe to say that the multinomial logit model is not perfect. “The primary limitation of the model is that the IIA axiom isimplausible for alternative sets containing choices that are close substitutes” <span class="citation">(McFadden <a href="#ref-mcfad1974" role="doc-biblioref">1974</a>)</span>.For this reason, there exists a way to connect together certain mode choices with others, thus maneuvering around the IIA property. The Nested Logit Model is one way to “connect” similar modes together.</p>
+</div>
+</div>
+<div id="nested-logit-model" class="section level2">
+<h2><span class="header-section-number">2.4</span> Nested Logit Model</h2>
+<p>The Multinomial Logit model distributes choice probabilities equally. A way to visually represent this can be shown below.</p>
+<center>
+<div class="figure">
+<img src="pics/mnl_tree.PNG" alt="Figure 2.1: An Example of a Multinomial Logit Model" />
+<p class="caption">Figure 2.1: An Example of a Multinomial Logit Model</p>
+</div>
+</center>
+<p>A Nested Logit Model, on the other hand, does not distribute choice probabilities equally. It instead, groups together certain mode choices under the same subset of probabilitiy. A way to visually represent this can be shown below.</p>
+<center>
+<div class="figure">
+<img src="pics/nl_tree.PNG" alt="Figure 2.2: An Example of a Nested Logit Model" />
+<p class="caption">Figure 2.2: An Example of a Nested Logit Model</p>
+</div>
+</center>
+<p>Mathematically, the nested logit model choice probability of an alternative can be shown below</p>
+<p><span class="math display" id="eq:mnl3">\[\begin{equation}
+  P_i = \frac{e^{V_i/\lambda_k}(\lambda_{j \in B_k}e^{V_j/\lambda_k})^{\lambda_t-1}}{\sum_{l \in K}(\sum_{j \in B_t}e^{V_j/ \lambda_t})^{ \lambda_t-1}} \tag{2.6}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span> represents the observable correlation between choices.</li>
+</ul>
+<p>When <span class="math inline">\(\lambda = 1\)</span>, no observable correlation exists between the choices, and the equation reverts back to the MNL equation. When <span class="math inline">\(\lambda &gt; 1\)</span> then a negative correlation exists, meaning <em>more</em> people would choose the utility that is trying to be isolated. This would violate utility theory itself, and therfore the estimated correlation exists as <span class="math inline">\(0 &lt; \lambda &lt; 1.\)</span></p>
+</div>
+<div id="latent-class-model" class="section level2">
+<h2><span class="header-section-number">2.5</span> Latent Class Model</h2>
+<p>Another way to surpass the limitation of the MNL model is to use a Latent Class Choice Model (LCM). The LCM is especially useful for modeling “indivdual choice heterogeneity based on alternative attributes and characterisitics” <span class="citation">(Dillingham <a href="#ref-regy2016" role="doc-biblioref">2016</a>)</span>. It maximizes the individual’s choice while minimizing error by dividing up individuals into select, probabilistic groups based on their attributes and their likelihood of being part of that group. An example of how this grouping looks like visually is shown below.</p>
+<center>
+<div class="figure">
+<img src="pics/lcm_tree.PNG" alt="Figure 2.3: An Example of a Latent Class Choice Model" />
+<p class="caption">Figure 2.3: An Example of a Latent Class Choice Model</p>
+</div>
+</center>
+<p>“FIGURE 1. Graphical model associated with a latent class model with a random effect in the latent class distribution.” (<a href="https://www.semanticscholar.org/paper/7.-Multilevel-Latent-Class-Models-Vermunt/b418c9829e31c59ee2b25d1a19293a1ce74820eb/figure/0" class="uri">https://www.semanticscholar.org/paper/7.-Multilevel-Latent-Class-Models-Vermunt/b418c9829e31c59ee2b25d1a19293a1ce74820eb/figure/0</a>)</p>
+<p>By dividing individuals up into differing groups, the LCM accounts for “the fact that different segments of the population have different needs and values and thus may exhibit different choice preferences” <span class="citation">(Eagle, Magidson, and Vermunt <a href="#ref-jay2003" role="doc-biblioref">2003</a>)</span>. Latent Class Choice Models are more effective and realistic at prediciting discrete choice alternatives. They account more heaviliy for the differences between different groups of people. For example, an individual with a high income, who lives near the edge of town will be more likely to use a car mode than an individual who has a low income and lives near the city center. These two different types of individuals will likely be part of two different groupings.</p>
+<p>Although, unlike cluster analysis, each individual has a possibility of being part of any group because their group is selected probabilistically opposed to deterministically. After individuals are separated into their group or <em>class</em>, their choice is determined by a utility function. Each class has marginally different functions to calculate the alternative based on that class’s set of attributes<span class="citation">(Dillingham <a href="#ref-regy2016" role="doc-biblioref">2016</a>)</span>. Of course, the alternative each individual selects within each class is also calulated probabilisitically.</p>
+<p>An analyst cannot know the true class for which the individual is a part of. For this very reason, error terms and probabilities are calculated. A detailed mathematical process of the Latent Class Model is now described.</p>
+<div id="mathematical-representation-of-lcm" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Mathematical Representation of LCM</h3>
+<p>The mathematical representations of a Latent Class Model are similar to the mathematics behind the Multinomial Logit Model. First, the multinomial logit probability choice equation, Equation <a href="chap2.html#eq:mnl1">(2.4)</a>, is used on the class level. Then, the same probability choice equation is used to determine for which class to put the individual. In addition, these representations will include more detail than those equations shown in Section 2.3. Also note that these equations are directly imported from <span class="citation">(Bierlaire et al. <a href="#ref-hunty" role="doc-biblioref">2013</a>)</span></p>
+<p>Starting from the beginning, and very similar to Equation <a href="chap2.html#eq:util1">(2.1)</a>, the class specific utility function for choosing alternative <span class="math inline">\(i\)</span> by decision maker <span class="math inline">\(n\)</span> is</p>
+<p><span class="math display" id="eq:lcm1">\[\begin{equation}
+  U_{in}^{c} = V(X_{in},X{n},\beta^c) + e_{in}^c \tag{2.7}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(V(X_{in},X{n},\beta^c)\)</span> is the oberservable part of the utility function,</li>
+<li><span class="math inline">\(X_{in}\)</span> is a vector of attributes relating to alternative <span class="math inline">\(i\)</span> for individual <span class="math inline">\(n\)</span>,</li>
+<li><span class="math inline">\(X_n\)</span> is a vector of attributes for individual <span class="math inline">\(n\)</span>,</li>
+<li><span class="math inline">\(\beta^c\)</span> is an estimated vector of paramters specific to class <span class="math inline">\(c\)</span>, and</li>
+<li><span class="math inline">\(e_{in}^c\)</span> is the random component of the utility which accounts for the unobserved attributes of the alternative.</li>
+</ul>
+<p>Knowing the utility of the alternative on the class level, the probability of individual <span class="math inline">\(n\)</span> choosing alternative <span class="math inline">\(i\)</span>, within the class <span class="math inline">\(c\)</span> can be calculated. A slightly more detailed version of Equation <a href="chap2.html#eq:mnl1">(2.4)</a>, the probability of choosing the alternative within a class is mathematically</p>
+<p><span class="math display" id="eq:lcm2">\[\begin{equation}
+  P_n(i|s) = \frac{e^{V(X_{in},X{n},\beta^c)}}{\sum_{j \in C_c}e^{V(X_{jn},X{n},\beta^c)}} \tag{2.8}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(C_c\)</span> is the set of alternatives which are considered by the individuals belonging to class <span class="math inline">\(c\)</span>.</li>
+</ul>
+<p>Equation <a href="chap2.html#eq:lcm1">(2.7)</a> and Equation <a href="chap2.html#eq:lcm2">(2.8)</a> relate to the utility and probability of individuals selecting an alternative within a specific group. Similarly, a utility and probability function are associated with which group an individual is to be a part of. As explained above, individuals are not deterministically assigned a class, but they are assigned membership to classes based on the characteristics that they possess <span class="citation">(Bierlaire et al. <a href="#ref-hunty" role="doc-biblioref">2013</a>)</span>. This relation can be described the <em>class-membership function</em>, such that</p>
+<p><span class="math display" id="eq:lcm3">\[\begin{equation}
+  F_{nc} = f(X_n,\gamma^c) + \epsilon_{nc} \tag{2.9}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(F_{nc}\)</span> “is a latent continuous variable that is related to the probability of belocint to class c and can be perceived as the ‘utility’ to belong to one class” <span class="citation">(Bierlaire et al. <a href="#ref-hunty" role="doc-biblioref">2013</a>)</span>,</li>
+<li><span class="math inline">\(\gamma^c\)</span> is the estimated vector of parameters and</li>
+<li><span class="math inline">\(\epsilon_{nc}\)</span> is probably the error term.</li>
+</ul>
+<p>The probability of person <span class="math inline">\(n\)</span> belonging to class <span class="math inline">\(c\)</span> can then be represented in a logit formula, such that</p>
+<p><span class="math display" id="eq:lcm4">\[\begin{equation}
+  P_n(c) = \frac{e^{f(X_n,\gamma^c)}}{\sum_{r \in C}e^{f(X_n,\gamma^r)}} \tag{2.10}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(C\)</span> is the set of classes.</li>
+</ul>
+<p>Since the probability of class groupings, and the specific probability of alternatives within the class have both been calculated, the complete probability of individual <span class="math inline">\(n\)</span> choosing alternative <span class="math inline">\(i\)</span> is shown in the following expression:</p>
+<p><span class="math display" id="eq:lcm5">\[\begin{equation}
+  P_n(i) = \sum_{c \in C}P_n(i|c)P_n(c) \tag{2.11}
+\end{equation}\]</span></p>
+<p>Overall, the calculations representing the Latent Class Choice Model are fairly simple and mimic the logic equations from before. The separated classes are just a way of minimizing the IIA property errors that a simple Mutlinomial Logit Model presents.</p>
+</div>
+</div>
+<div id="purpose-based-model" class="section level2">
+<h2><span class="header-section-number">2.6</span> Purpose Based Model</h2>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-hunty">
+<p>Bierlaire, Michel, Aurelie Glerum, Ricardo Hurtubia, and My Nguyen. 2013. <em>Estimation of Mode Choice Models with Latent Classes and Psychometric Indicators</em>. University of Chile.</p>
+</div>
+<div id="ref-regy2016">
+<p>Dillingham, Reginald T. 2016. <em>A Latent-Class Discrete-Choice Model to Demonstrate How Course Attributes and Student Characteristics Influence Demand for Economics Electives: The Challenge to Increase Enrollment</em>. Michigan Technological University. <a href="https://doi.org/10.37099/mtu.dc.etdr/262">https://doi.org/10.37099/mtu.dc.etdr/262</a>.</p>
+</div>
+<div id="ref-jay2003">
+<p>Eagle, Tom, Jay Magidson, and Jeroen K. Vermunt. 2003. <em>New Developments in Latent Class Choice Modeling</em>. ResearchGate. <a href="https://www.researchgate.net/publication/239847618_New_developments_in_latent_class_choice_modeling">https://www.researchgate.net/publication/239847618_New_developments_in_latent_class_choice_modeling</a>.</p>
+</div>
+<div id="ref-mac-mode2020">
+<p>Macfarlane, Gregory. 2020a. <em>A Self-Instructing Course in Mode Choice Modeling</em>. R Studio. <a href="https://byu-transpolab.github.io/modechoice/">https://byu-transpolab.github.io/modechoice/</a>.</p>
+</div>
+<div id="ref-mac-urb2020">
+<p>Macfarlane, Gregory. 2020b. <em>Urban Transportation Planning</em>. R Studio. <a href="https://byu-transpolab.github.io/ceen565/">https://byu-transpolab.github.io/ceen565/</a>.</p>
+</div>
+<div id="ref-mcfad1974">
+<p>McFadden. 1974. <em>Conditional Logit Analysis of Qualitative Choice Behaviour</em>. I. Zarembka (ed.), Frontiers in econometrics. New York: Academic Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["project_name.pdf", "project_name.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
