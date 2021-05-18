@@ -1,4 +1,7 @@
-# Multinomial Logit Model in BEAM {#chap3}
+# Mode Choice Models of BEAM {#chap3}
+As explained in the introduction, BEAM has two mode choice models: A Multinomial Logit Choice Model and a Latent Class Choice Model. The mathematics behind these two models is explained in Chapter \@ref(chap2), whereas how BEAM's code organizes the mode chocie is explained in this chapter. 
+
+## Multinomial Logit Mode Choice
 The first mode choice model available in BEAM is a simple multinomial logit mode choice model. This model takes in certain parameters and inputs and uses them to probabilistically estimate the likely mode choice for each user in their repsective situation. A detailed explanation of the details behind a multinomial logit choice model can be shown in Chapter \@ref(chap23).
 
 Mathematically, the observerable utility equation for the simple multinomial logit model in BEAM can be shown as 
@@ -18,7 +21,7 @@ All things considered, the observable utility equation for BEAM's multinomial lo
 
 The MNL equation is used in BEAM, but how exactly is it implemented? There are many steps, including the use of the utility equation, explaining the complete mode choice process in BEAM. 
 
-## Process in BEAM
+### Process in BEAM
 Understanding the current mode choice process in BEAM is essential to potentially updating or changing it in the future. In order to explain the mode choice process fully though, first a rough outline is shown, followed by details about specific parts of the steps. The idea behind the steps are to help guide BEAM users through the complex code that entangles the mode choice process itself. 
 
 Below are 11 steps, roughly from beginning to end, of the mode choice process within the BEAM framework. Words in bold are meant to highlight specific classes or methods from within Java.
@@ -117,5 +120,7 @@ The $MultinomialLogit$ class is the backbone to the actual calculations are are 
 
 ### Events
 I will not go into detail about the various classes that related to calculating events. One important note is that the mode choice is related to an array of different event features, some of which are written in step 11. 
+
+## Latent Class Mode Choice
 
 
