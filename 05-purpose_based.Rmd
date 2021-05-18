@@ -1,9 +1,0 @@
-# Purpose Based Mode Choice {#chap5}
-
-## Framework in ActivitySim
-
-
-This section might be called "Results" instead of "Applications," depending
-on what it is that you are working on. But you'll probably say something like 
-"The initial model estimation results are given in Table \@ref(tab:estimation-results)."
-That table is created with the `modelsummary()` package and function.
